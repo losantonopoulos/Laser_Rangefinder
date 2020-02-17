@@ -9,8 +9,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
 
-	//char const *dev = DEFAULT_DEV;
-	char const *dev = "/dev/ttyUSB0";	
+	const char *dev = "/dev/ttyUSB1";	
 	LRF disto = LRF(dev);
 
 /*	disto.enablePointer(0); // enable pointer
@@ -67,13 +66,15 @@ int main(int argc, char *argv[]){
 	double	var = 0.0;	
 	int 	max_rounds = 13;
 
+	cout << "Single Measurement: ";
+	cout << disto.getMeasurement() << endl;
+
 	cout << "\nTesting " << max_rounds << " continous measurements\n";
 
-	//cout << disto.getMeasurements(&avg, &var, &max_rounds) << endl;
-	cout << disto.getMeasurement() << endl;
+	cout << disto.getMeasurements(&avg, &var, &max_rounds) << endl;
 	cout << "Rounds: " << max_rounds << " Average: " << avg << " Variance: " << var << endl;
-
-	cout << "Laser pointer: " << disto.isON() << endl;
+	
+	cout << "Laser pointer State: " << disto.isON() << endl;
 
 	return 0;
 }
